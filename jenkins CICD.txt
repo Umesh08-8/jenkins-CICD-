@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running unit tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to environment...'
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline has finished running.'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed. Checking logs...'
+        }
+    }
+}
